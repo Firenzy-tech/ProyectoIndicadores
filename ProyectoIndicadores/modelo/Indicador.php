@@ -44,16 +44,17 @@ class Indicador{
         return $this->id;
     }
 
-        function setCodigo($codigo){
-            $this->codigo = $codigo;
-        }
-        function getCodigo(){
+    function setCodigo($codigo){
+           $this->codigo = $codigo;
+    }
+    function getCodigo(){
             return $this->codigo;
-        }
+    }
     
     function setNombre($nombre){
         $this->nombre = $nombre;
     }
+
     function getNombre(){
         return $this->nombre;
     }
@@ -68,7 +69,7 @@ class Indicador{
     function setAlcance($alcance){
         $this->alcance = $alcance;
     }
-    //all getter and setter methods
+ 
     function getAlcance(){
         return $this->alcance;
     }

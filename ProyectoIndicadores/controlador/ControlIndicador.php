@@ -14,9 +14,18 @@ class ControlIndicador{
         $alc = $this->objIndicador->getAlcance();
         $for = $this->objIndicador->getFormula();
         $met = $this->objIndicador->getMeta();
+        $fkidtipoindicador = $this->objIndicador->getFkIdTipoIndicador();
+        $fkidunidadmedicion = $this->objIndicador->getFkIdUnidadMedicion();
+        $fkidsentido = $this->objIndicador->getFkIdSentido();
+        $fkidfrecuencia = $this->objIndicador->getFkIdFrecuencia();
+        $fkidarticulo = $this->objIndicador->getFkIdArticulo();
+        $fkidliteral = $this->objIndicador->getFkIdLiteral();
+        $fkidnumeral = $this->objIndicador->getFkIdNumeral();
+        $fkidparagrafo = $this->objIndicador->getFkIdParagrafo();
             
         //Por el momento se estan completando los datos quemados
-        $comandoSql = "INSERT INTO indicador(id,codigo,nombre,objetivo,alcance,formula,fkidtipoindicador,fkidunidadmedicion,meta,fkidsentido,fkidfrecuencia,fkidarticulo,fkidliteral,fkidnumeral,fkidparagrafo) VALUES ('$id', '$cod', '$nom', '$objt', '$alc', '$for', '2', '14', '$met', '2', '', '2.5.3.2.1.1', 'a2.5.3.2.1.3', '1b2.5.3.2.3.1.7', '12.5.3.2.1.3')";
+        $comandoSql = "INSERT INTO indicador(id,codigo,nombre,objetivo,alcance,formula,fkidtipoindicador,fkidunidadmedicion,meta,fkidsentido,fkidfrecuencia,fkidarticulo,fkidliteral,fkidnumeral,fkidparagrafo) VALUES ('$id', '$cod', '$nom', '$objt', '$alc', '$for', $fkidtipoindicador, 
+        $fkidunidadmedicion, '$met', '$fkidsentido', '$fkidfrecuencia', '$fkidarticulo', '$fkidliteral', '$fkidnumeral', '$fkidparagrafo' )";
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd($GLOBALS['serv'], $GLOBALS['usua'], $GLOBALS['pass'], $GLOBALS['bdat'], $GLOBALS['port']);
         $objControlConexion->ejecutarComandoSql($comandoSql);
@@ -84,7 +93,14 @@ class ControlIndicador{
                 $objIndicador->setAlcance($row['alcance']);
                 $objIndicador->setFormula($row['formula']);
                 $objIndicador->setFkIdTipoIndicador($row['fkidtipoindicador']);
+                $objIndicador->setFkIdUnidadMedicion($row['fkidunidadmedicion']);
                 $objIndicador->setMeta($row['meta']);
+                $objIndicador->setFkIdSentido($row['fkidsentido']);
+                $objIndicador->setFkIdFrecuencia($row['fkidfrecuencia']);
+                $objIndicador->setFkIdArticulo($row['fkidarticulo']);
+                $objIndicador->setFkIdLiteral($row['fkidliteral']);
+                $objIndicador->setFkIdNumeral($row['fkidnumeral']);
+                $objIndicador->setFkIdParagrafo($row['fkidparagrafo']);
                 $arregloIndicador[$i] = $objIndicador;
                 $i++;
             }
