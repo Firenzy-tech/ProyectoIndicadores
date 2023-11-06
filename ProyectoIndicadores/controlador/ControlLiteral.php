@@ -33,7 +33,17 @@ return $arregloLiteral;
 
 }
 
+function ConsultarDescripcionPorId($id){
+    $comandoSql = "SELECT descripcion FROM Literal WHERE id = '$id'";
+    $objControlConexion = new ControlConexion();
+    $objControlConexion->abrirBd($GLOBALS['serv'],$GLOBALS['usua'],$GLOBALS['pass'],$GLOBALS['bdat'],$GLOBALS['port']);
+    $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
+    if ($row = $recordSet->fetch_array(MYSQLI_BOTH)){
+        $descripcion = $row['descripcion'];
+    }
+    $objControlConexion->cerrarBd();
+    return $descripcion;
 
-
+}
 }
 ?>

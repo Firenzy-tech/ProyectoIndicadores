@@ -122,5 +122,18 @@
             $objControlConexion->cerrarBd();
             return $arregloTipoindicador;
         }
+
+        function consultarNombrePorId($id){
+            $comandoSql = "SELECT nombre FROM tipoindicador WHERE id = '$id'";
+            $objControlConexion = new ControlConexion();
+            $objControlConexion->abrirBd($GLOBALS['serv'],$GLOBALS['usua'],$GLOBALS['pass'],$GLOBALS['bdat'],$GLOBALS['port']);
+            $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
+            $nombre = "";
+            if ($row = $recordSet->fetch_array(MYSQLI_BOTH)){
+                $nombre = $row['nombre'];
+            }
+            $objControlConexion->cerrarBd();
+            return $nombre;
+        }
     }
 ?>

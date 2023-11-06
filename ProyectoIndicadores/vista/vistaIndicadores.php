@@ -73,6 +73,9 @@ $arregloNumeral = $objControlNum->listar();
 $objControlPar = new ControlParagrafo(null);
 $arregloParagrafo = $objControlPar->listar();
 
+$objTipoIndicador = new ControlTipoindicador(null);
+
+
 
 
 //var_dump($arregloIndicadores);
@@ -188,71 +191,127 @@ switch ($boton) {
 	?>
 	<br />
 	<div>
-		<div class="table-wrapper">
-			
-			<div>
 				<a href="#crudModal" class="btn btn-primary btn-lg btn-block" data-toggle="modal"><i class="material-icons">&#xE84E;</i> <span>Gestión Indicadores</span></a>
 			</div>
-		
-		<table class="table table-striped">
-  <thead>
-    <tr>
-	<th 
-		scope="col">
-					<th scope="col">Id</th>
-					<th scope="col">Código</th>
-					<th scope="col">Nombre</th>
-					<th scope="col">Objetivo</th>
-					<th scope="col">Alcance</th>
-					<th scope="col">Formula</th>
-					<th scope="col">Id Tipo Indicador</th>
-					<th scope="col">Id Unidad Medición</th>
-					<th scope="col">Meta</th>
-					<th scope="col">Id Sentido</th>
-					<th scope="col">Id Frecuencia</th>
-					<th scope="col">Id Articulo</th>
-					<th scope="col">Id Literal</th>
-					<th scope="col">Id Numeral</th>
-					<th scope="col">Id Paragrafo</th>
-    </tr>
-  </thead>
-  <tbody>
-  <?php
-				for ($i = 0; $i < count($arregloIndicadores); $i++) {
-				?>
+	<div>
+		<?php
+		// Define cuántos registros se mostrarán por página
+		$registrosPorPagina = 5;
+
+		// Obtiene el número total de registros
+		$totalRegistros = count($arregloIndicadores);
+
+		// Obtiene el número total de páginas
+		$totalPaginas = ceil($totalRegistros / $registrosPorPagina);
+
+		// Obtiene la página actual
+		if (isset($_GET['pagina'])) {
+			$paginaActual = $_GET['pagina'];
+		} else {
+			$paginaActual = 1;
+		}
+
+		// Calcula el índice del primer registro de la página actual
+		$indicePrimerRegistro = ($paginaActual - 1) * $registrosPorPagina;
+
+		// Obtiene los registros de la página actual
+		$registrosPaginaActual = array_slice($arregloIndicadores, $indicePrimerRegistro, $registrosPorPagina);
+		?>
+
+		<div class="table-wrapper table-responsive" style="overflow-x: scroll; overflow-y: scroll;">
+			<table class="table table-striped">
+				<thead>
 					<tr>
-						<td>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="checkbox1" name="options[]" value="1">
-								<label for="checkbox1"></label>
-							</span>
-						</td>
-						<td><?php echo $arregloIndicadores[$i]->getId(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getCodigo(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getNombre(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getObjetivo(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getAlcance(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFormula(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdTipoIndicador(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdUnidadMedicion(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getMeta(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdSentido(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdFrecuencia(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdArticulo(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdLiteral(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdNumeral(); ?></td>
-						<td><?php echo $arregloIndicadores[$i]->getFkIdParagrafo(); ?></td>
-						<td>
-							
-						</td>
-					</tr>
+						
+							<th scope="col">Id</th>
+							<th scope="col" style="min-width: 150px;">Código</th>
+							<th scope="col" style="min-width: 150px;">Nombre</th>
+							<th scope="col" style="min-width: 150px;">Objetivo</th>
+							<th scope="col" style="min-width: 150px;">Alcance</th>
+							<th scope="col" style="min-width: 150px;">Formula</th>
+							<th scope="col" style="min-width: 150px;">Tipo Indicador</th>
+							<th scope="col" style="min-width: 150px;">Unidad Medición</th>
+							<th scope="col" style="min-width: 150px;">Meta</th>
+							<th scope="col" style="min-width: 150px;">Sentido</th>
+							<th scope="col" style="min-width: 150px;">Id Frecuencia</th>
+							<th scope="col" style="min-width: 150px;">Articulo</th>
+							<th scope="col" style="min-width: 150px;">Literal</th>
+							<th scope="col" style="min-width: 150px;">Id Numeral</th>
+							<th scope="col" style="min-width: 150px;">Id Paragrafo</th>
+						</tr>
+				</thead>
+				<tbody>
+					<?php
+					for ($i = 0; $i < count($registrosPaginaActual); $i++) {
+					?>
+						<tr>
+						
+							<td><?php echo $registrosPaginaActual[$i]->getId(); ?></td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getCodigo(); ?></td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getNombre(); ?></td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getObjetivo(); ?></td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getAlcance(); ?></td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getFormula(); ?></td>
+							<td style="min-width: 150px;"><?php echo $mostraNombreTipoIndicaro = $objTipoIndicador->consultarNombrePorId($registrosPaginaActual[$i]->getFkIdTipoIndicador()); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $mostrarUniMedicionDescrip = $objControlUniMed->consultarDescripcionUnidadDeMedicionPorId($registrosPaginaActual[$i]->getFkIdUnidadMedicion()); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getMeta(); ?></td>
+							<td style="min-width: 150px;"><?php echo $mostrarNombreSentido = $objControlSentido->ConsultarNombreSentido($registrosPaginaActual[$i]->getFkIdSentido()); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getFkIdFrecuencia(); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $mostrarNombreArticulo = $objControlArt->ConsultarNombrePorId($registrosPaginaActual[$i]->getFkIdArticulo()); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $mostrarDescripcionLiteral = $objControlLit->ConsultarDescripcionPorId($registrosPaginaActual[$i]->getFkIdLiteral()); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getFkIdNumeral(); ?>
+							</td>
+							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getFkIdParagrafo(); ?></td>
+							<td>
+
+							</td>
+						</tr>
+					<?php
+					}
+					?>
+				</tbody>
+			</table>
+		</div>
+
+		<!-- Paginación -->
+		<div class="container text-center">
+			<div class="btn-group" role="group" aria-label="Paginación">
+				<?php
+				// Muestra el botón "Anterior" si no se encuentra en la primera página
+				if ($paginaActual > 1) {
+				?>
+					<a href="?pagina=<?php echo $paginaActual - 1; ?>" class="btn btn-primary">&laquo; Anterior</a>
+				<?php
+				}
+
+				// Muestra los botones de las páginas
+				for ($i = 1; $i <= $totalPaginas; $i++) {
+					if ($i == $paginaActual) {
+				?>
+						<a href="?pagina=<?php echo $i; ?>" class="btn btn-primary active"><?php echo $i; ?></a>
+					<?php
+					} else {
+					?>
+						<a href="?pagina=<?php echo $i; ?>" class="btn btn-primary"><?php echo $i; ?></a>
+				<?php
+					}
+				}
+
+				// Muestra el botón "Siguiente" si no se encuentra en la última página
+				if ($paginaActual < $totalPaginas) {
+				?>
+					<a href="?pagina=<?php echo $paginaActual + 1; ?>" class="btn btn-primary">Siguiente &raquo;</a>
 				<?php
 				}
 				?>
- 
-  </tbody>
-</table>
-		
+			</div>
+		</div>
 		<!-- crud Modal HTML -->
 		<div id="crudModal" class="modal fade">
 			<div class="modal-dialog">

@@ -6,58 +6,7 @@
         function __construct($objUnidadmedicion){
             $this->objUnidadmedicion = $objUnidadmedicion;
         }
-/*
-        function validarIngreso(){
-                $msg = "ok";
-                $validar = false;
-                $usu = $this->objUnidadmedicion->getNomUsuario(); 
-                $des = $this->objUnidadmedicion->getDescripcion();
-                $comandoSql = "SELECT * FROM tblUsuario WHERE nomUsuario='$usu' AND contrasena='$des'";
-                $objControlConexion = new ControlConexion();
-                $objControlConexion->abrirBd($GLOBALS['serv'], GLOBALS['usua'], $GLOBALS['pass'], $GLOBALS['bdat'], $GLOBALS['port']);
-                $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
-                try
-                {
-                    if (mysqli_num_rows($recordSet) > 0) 
-                    {
-                        $validar = true;
-                    }
-                    $objControlConexion->cerrarBd();
-                }
-                catch (Exception $objExcetion)
-                {
-                    $msg = $objExcetion->getMessage();
-                } 
-                return $validar;
-        }
 
-        function consultarRolesPorUsuario($desUsu){
-            $msg = "ok";
-            $listadoRolesDelUsuario = [];
-            $comandoSQL = "SELECT fkIdRol FROM tblrol_usuario WHERE fkNomUsuario='$desUsu'";
-            $objControlConexion = new ControlConexion();
-            $objControlConexion->abrirBd($GLOBALS['serv'], $GLOBALS['usua'], $GLOBALS['pass'], $GLOBALS['bdat'], $GLOBALS['port']);
-            $recordSet = $objControlConexion->ejecutarSelect($comandoSQL);
-            try
-            {
-                if (mysqli_num_rows($recordSet) > 0)
-                {
-                    $i = 0;
-                    while ($row = $recordSet->fetch_array(MYSQLI_BOTH))
-                    {
-                        $listadoRolesDelUsuario[$i] = $row[0];
-                        $i++;
-                    }
-                    $objControlConexion->cerrarBd();
-                }
-            }
-            catch (Exception $objExcetion)
-            {
-                $msg = $objExcetion->getMessage();
-            }
-            return $listadoRolesDelUsuario;
-        }
-*/
         function guardar(){
             $id = $this->objUnidadmedicion->getId(); 
             $des = $this->objUnidadmedicion->getDescripcion();
@@ -122,5 +71,23 @@
             $objControlConexion->cerrarBd();
             return $arregloUnidadmedicion;
         }
+
+        function consultarDescripcionUnidadDeMedicionPorId($id){
+            $comandoSql = "SELECT descripcion FROM unidadmedicion WHERE id = '$id'";
+            $objControlConexion = new ControlConexion();
+            $objControlConexion->abrirBd($GLOBALS['serv'],$GLOBALS['usua'],$GLOBALS['pass'],$GLOBALS['bdat'],$GLOBALS['port']);
+            $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
+            $descripcion = "";
+            if ($row = $recordSet->fetch_array(MYSQLI_BOTH)) {
+                $descripcion = $row['descripcion'];
+                
+            }
+            $objControlConexion->cerrarBd();
+            return $descripcion;
+        }
+
+        
+
+
     }
 ?>

@@ -33,6 +33,19 @@ function listar(){
     return $arregloArticulo;
 }
 
+function ConsultarNombrePorId($id){
+
+    $comandoSql = "SELECT nombre FROM articulo WHERE id = '$id'";
+    $objControlConexion = new ControlConexion();
+    $objControlConexion->abrirBd($GLOBALS['serv'], $GLOBALS['usua'], $GLOBALS['pass'], $GLOBALS['bdat'], $GLOBALS['port']);
+    $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
+    if ($row = $recordSet->fetch_array(MYSQLI_BOTH)){
+        $nombre = $row['nombre'];
+    }
+    $objControlConexion->cerrarBd();
+    return $nombre;
+}
+
 }
 
 ?>

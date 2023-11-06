@@ -54,10 +54,10 @@ $(document).ready(function()
 		$("#txtUnidadMedicion").removeAttr("disabled");
 		$("#txtMeta").removeAttr("disabled");
 		$("#txtSentido").removeAttr("disabled");
-		$("#campoArticuloModal").removeAttr("disabled");
-		$("#campoLiteralModal").removeAttr("disabled");
-		$("#campoNumeralModal").removeAttr("disabled");
-		$("#campoParagrafoModal").removeAttr("disabled");
+		$("#txtArticulo").removeAttr("disabled");
+		$("#txtLiteral").removeAttr("disabled");
+		$("#txtNumeral").removeAttr("disabled");
+		$("#txtParagrafo").removeAttr("disabled");
 
 
 		$("#txtCodigo").val("");
