@@ -17,8 +17,10 @@ class Indicador{
     var $fkidnumeral;
     var $fkidparagrafo;
 
-    function __construct($id, $codigo, $nombre, $objetivo, $alcance, $formula, $fkidtipoindicador, $fkidunidadmedicion, $meta,
-    $fkidsentido, $fkidfrecuencia, $fkidarticulo, $fkidliteral, $fkidnumeral, $fkidparagrafo)
+    function __construct($id, $codigo, $nombre, $objetivo, $alcance, 
+    $formula, $fkidtipoindicador, $fkidunidadmedicion, $meta,
+    $fkidsentido, $fkidfrecuencia, $fkidarticulo, $fkidliteral, 
+    $fkidnumeral, $fkidparagrafo)
     {
         $this->id = $id;
         $this->codigo = $codigo;

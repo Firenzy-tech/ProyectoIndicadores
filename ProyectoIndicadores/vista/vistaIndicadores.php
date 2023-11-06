@@ -98,6 +98,27 @@ if (isset($_POST['txtSentido'])) {
 	$sentidos = explode(";", $_POST['txtSentido']);
 	$fkidsenti = $sentidos[0];
 } 
+
+if (isset($_POST['txtArticulo'])) {
+	$articulos = explode(";", $_POST['txtArticulo']);
+	$fkidartic = $articulos[0];
+}
+if (isset($_POST['txtLiteral'])) {
+	$literales = explode(";", $_POST['txtLiteral']);
+	$fkidliter = $literales[0];
+}
+
+if (isset($_POST['txtNumeral'])) {
+	$numerales = explode(";", $_POST['txtNumeral']);
+	$fkidnumer = $numerales[0];
+}
+
+if (isset($_POST['txtParagrafo'])) {
+	$paragrafos = explode(";", $_POST['txtParagrafo']);
+	$fkidparag = $paragrafos[0];
+	$fkidartic = $paragrafos[2];
+}
+
 if (isset($_POST['txtMeta'])) $met = $_POST['txtMeta'];
 if (isset($_POST['listbox1'])) $listbox1 = $_POST['listbox1'];
 switch ($boton) {
@@ -105,8 +126,8 @@ switch ($boton) {
 		$objIndicadores = new Indicador(
 		$id=null,$cod, $nom, $objt, $alc, $for, 
 		$fkidtpindic, $fkidunimedi, $met, 
-		$fkidsenti, $fkidartic, $fkidliter, 
-		$fkidnumer, $fkidparag, $fkidfrecu);
+		$fkidsenti,$fkidfrecu, $fkidartic, $fkidliter, 
+		$fkidnumer, $fkidparag, );
 		$objControlIndicador = new ControlIndicador($objIndicadores);
 		$objControlIndicador->guardar();
 		header('Location: vistaIndicadores.php');
@@ -168,16 +189,16 @@ switch ($boton) {
 	<br />
 	<div>
 		<div class="table-wrapper">
-			<div class="table-title">
-				<h1>Gestión indicador</h1>
-			</div>
+			
 			<div>
 				<a href="#crudModal" class="btn btn-primary btn-lg btn-block" data-toggle="modal"><i class="material-icons">&#xE84E;</i> <span>Gestión Indicadores</span></a>
 			</div>
-		<table class="table">
-			<thead class="thead-dark">
-				<tr>
-					<th scope="col">Seleccionar</th>
+		
+		<table class="table table-striped">
+  <thead>
+    <tr>
+	<th 
+		scope="col">
 					<th scope="col">Id</th>
 					<th scope="col">Código</th>
 					<th scope="col">Nombre</th>
@@ -193,10 +214,10 @@ switch ($boton) {
 					<th scope="col">Id Literal</th>
 					<th scope="col">Id Numeral</th>
 					<th scope="col">Id Paragrafo</th>
-				</tr>
-			</thead>
-			<tbody>
-				<?php
+    </tr>
+  </thead>
+  <tbody>
+  <?php
 				for ($i = 0; $i < count($arregloIndicadores); $i++) {
 				?>
 					<tr>
@@ -228,8 +249,10 @@ switch ($boton) {
 				<?php
 				}
 				?>
-			</tbody>
-		</table>
+ 
+  </tbody>
+</table>
+		
 		<!-- crud Modal HTML -->
 		<div id="crudModal" class="modal fade">
 			<div class="modal-dialog">
@@ -255,23 +278,7 @@ switch ($boton) {
 								<!-- Nav tabs -->
 								<br />
 								<br />
-								<ul class="nav nav-tabs" role="tablist">
-									<li class="nav-item">
-										<a class="nav-link active" data-toggle="tab" href="#home">Indicador</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#vistaRepresenvisual">Representación Visual</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#menu2">Responsables</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#menu2">Fuentes</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" data-toggle="tab" href="#menu2">Variables</a>
-									</li>
-								</ul>
+						
 								<!-- Tab panes -->
 								<div class="tab-content">
 									<div id="home" class="container tab-pane active"><br>
@@ -307,9 +314,10 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoTipoIndicadorModal">
 													<label>Tipo indicador</label>
 													<select class="form-control" id="txtTipoIndicador" name="txtTipoIndicador" disabled>
+													<option value="">Seleccione un Tipo Indicador</option>
 														<?php for ($i = 0; $i < count($arregloTipoindicador); $i++) { ?>
 															<option value="<?php echo $arregloTipoindicador[$i]->getId() . ";" . $arregloTipoindicador[$i]->getNombre(); ?>">
-																<?php echo $arregloTipoindicador[$i]->getId() . ";" . $arregloTipoindicador[$i]->getNombre(); ?>
+																<?php echo  $arregloTipoindicador[$i]->getNombre(); ?>
 															</option>
 														<?php } ?>
 													</select>
@@ -318,9 +326,10 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoUnidadMedicionModal">
 													<label>Unidad Medición</label>
 													<select class="form-control" id="txtUnidadMedicion" name="txtUnidadMedicion" disabled>
+													<option value="">Seleccione unidad de Medición</option>
 														<?php for ($i = 0; $i < count($arregloUnidadmedicion); $i++) { ?>
 															<option value="<?php echo $arregloUnidadmedicion[$i]->getId() . ";" . $arregloUnidadmedicion[$i]->getDescripcion(); ?>">
-																<?php echo $arregloUnidadmedicion[$i]->getId() . ";" . $arregloUnidadmedicion[$i]->getDescripcion(); ?>
+																<?php echo $arregloUnidadmedicion[$i]->getDescripcion(); ?>
 															</option>
 														<?php } ?>
 													</select>
@@ -334,13 +343,66 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoSentidoModal">
 													<label>Sentido</label>
 													<select class="form-control" id="txtSentido" name="txtSentido" disabled>
+													<option value="">Seleccione un Ssentido</option>
 														<?php for ($i = 0; $i < count($arregloSentido); $i++) { ?>
 															<option value="<?php echo $arregloSentido[$i]->getId() . ";" . $arregloSentido[$i]->getNombre(); ?>">
-																<?php echo $arregloSentido[$i]->getId() . ";" . $arregloSentido[$i]->getNombre(); ?>
+																<?php echo  $arregloSentido[$i]->getNombre(); ?>
 															</option>
 														<?php } ?>
 													</select>
 												</div>
+
+												<!-- Desde aqui hay que corregir -->
+											
+												<div class="form-group col-6" id="campoArticuloModal">
+													<label>Articulo</label>
+													<select class="form-control" id="txtArticulo" name="txtArticulo" disabled>
+													<option value="">Seleccione un Artículo</option>
+														<?php for ($i = 0; $i < count($arregloArticulo); $i++) { ?>
+															<option value="<?php echo $arregloArticulo[$i]->getId() . ";" . $arregloArticulo[$i]->getNombre(); ?>">
+																<?php echo  $arregloArticulo[$i]->getNombre(); ?>
+															</option>
+														<?php } ?>
+													</select>
+												</div>
+												<div> 
+												<div class="form-group col-6" id="campoLiteralModal">
+													<label>Literal</label>
+													<select class="form-control" id="txtLiteral" name="txtLiteral" disabled>
+													<option value="">Seleccione un Literal</option>
+														<?php for ($i = 0; $i < count($arregloLiteral); $i++) { ?>
+															<option value="<?php echo $arregloLiteral[$i]->getId() . ";" . $arregloLiteral[$i]->getDescripcion(); ?>">
+																<?php echo  $arregloLiteral[$i]->getDescripcion(); ?>
+															</option>
+														<?php } ?>
+													</select>
+												</div>
+												<div> 
+												<div class="form-group col-6" id="campoNumeralModal">
+													<label>Numeral</label>
+													<select class="form-control" id="txtNumeral" name="txtNumeral" disabled>
+													<option value="">Seleccione un Numeral</option>
+														<?php for ($i = 0; $i < count($arregloNumeral); $i++) { ?>
+															<option value="<?php echo $arregloNumeral[$i]->getId() . ";" . $arregloNumeral[$i]->getDescripcion(); ?>">
+																<?php echo  $arregloNumeral[$i]->getDescripcion(); ?>
+															</option>
+														<?php } ?>
+													</select>
+												</div>
+												<div> 
+
+												<div class="form-group col-6" id="campoParagrafoModal">
+													<label>Paragrafo</label>
+													<select class="form-control" id="txtParagrafo" name="txtParagrafo" disabled>
+														<option value="">Seleccione un Parrafo</option>
+														<?php for ($i = 0; $i < count($arregloParagrafo); $i++) { ?>
+															<option value="<?php echo $arregloParagrafo[$i]->getId() . ";" . $arregloParagrafo[$i]->getDescripcion().";". $arregloParagrafo[$i]->getFkidarticulo(); ?>">
+																<?php echo  $arregloParagrafo[$i]->getDescripcion(); ?>
+															</option>
+														<?php } ?>
+													</select>
+												</div>
+												
 
 												<div class="form-group crudModal">
 													<input type="submit" id="btnConsultar" name="bt" class="btn btn-info" value="Consultar" >
@@ -348,6 +410,7 @@ switch ($boton) {
 													<input type="submit" id="btnModificar" name="bt" class="btn btn-warning" value="Modificar">
 													<input type="submit" id="btnBorrar" name="bt" class="btn btn-danger" value="Borrar">
 													<input type="submit" id="btnLimpiar" name="limpiar" class="btn btn-light" value="Limpiar campos">
+													<input type="button" class="btn btn-danger" data-dismiss="modal" value="Cancelar">
 												</div>
 											</div>
 										</div>
@@ -355,9 +418,7 @@ switch ($boton) {
 
 								</div>
 							</div>
-						</div>
-						<div class="modal-footer">
-							<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+							</div>
 						</div>
 					</form>
 				</div>

@@ -12,6 +12,8 @@ $(document).ready(function()
 	$("#campoUnidadMedicionModal").css("display", "block");
 	$("#campoMetaModal").css("display", "block");
 	$("#campoSentidoModal").css("display", "block");
+	$("#campoArticuloModal").css("display", "block");
+	
 
 	$(".crudFuncionesModal").css("opacity","1");
 	$(".crudModal").css("display","block");
@@ -37,6 +39,11 @@ $(document).ready(function()
 		$("#campoMetaModal").css("display", "block");
 		$("#campoUnidadMedicionModal").css("display", "block");
 		$("#campoSentidoModal").css("display", "block");
+		$("#campoArticuloModal").css("display", "block");
+		$("#campoLiteralModal").css("display", "block");
+		$("#campoNumeralModal").css("display", "block");
+		$("#campoParagrafoModal").css("display", "block");
+
 
 		$("#txtCodigo").removeAttr("disabled");
 		$("#txtNombre").removeAttr("disabled");
@@ -47,6 +54,11 @@ $(document).ready(function()
 		$("#txtUnidadMedicion").removeAttr("disabled");
 		$("#txtMeta").removeAttr("disabled");
 		$("#txtSentido").removeAttr("disabled");
+		$("#campoArticuloModal").removeAttr("disabled");
+		$("#campoLiteralModal").removeAttr("disabled");
+		$("#campoNumeralModal").removeAttr("disabled");
+		$("#campoParagrafoModal").removeAttr("disabled");
+
 
 		$("#txtCodigo").val("");
 		$("#txtNombre").val("");
@@ -74,6 +86,11 @@ $(document).ready(function()
 		$("#campoMetaModal").css("display", "none");
 		$("#campoUnidadMedicionModal").css("display", "none");
 		$("#campoSentidoModal").css("display", "none");
+		$("#campoArticuloModal").css("display", "none");
+		$("#campoLiteralModal").css("display", "none");
+		$("#campoNumeralModal").css("display", "none");
+		$("#campoParagrafoModal").css("display", "none");
+
 
 		$("#tituloFuncionModal").text("Consultar");
 		$("#txtId").val("");
@@ -97,6 +114,11 @@ $(document).ready(function()
 		$("#campoMetaModal").css("display", "block");
 		$("#campoUnidadMedicionModal").css("display", "block");
 		$("#campoSentidoModal").css("display", "block");
+		$("#campoArticuloModal").css("display", "block");
+		$("#campoLiteralModal").css("display", "block");
+		$("#campoNumeralModal").css("display", "block");
+		$("#campoParagrafoModal").css("display", "block");
+
 		
 		$("#tituloFuncionModal").text("Modificar");
 
@@ -109,6 +131,10 @@ $(document).ready(function()
 		$("#txtUnidadMedicion").removeAttr("disabled");
 		$("#txtMeta").removeAttr("disabled");
 		$("#txtSentido").removeAttr("disabled");
+		$("#txtArticulo").removeAttr("disabled");
+		$("#txtLiteral").removeAttr("disabled");
+		$("#txtNumeral").removeAttr("disabled");
+		$("#txtParagrafo").removeAttr("disabled");
 		
 		$("#txtId").val("");
 		$("#txtNombre").val("");
@@ -132,6 +158,10 @@ $(document).ready(function()
 		$("#campoMetaModal").css("display", "none");
 		$("#campoUnidadMedicionModal").css("display", "none");
 		$("#campoSentidoModal").css("display", "none");
+		$("#campoArticuloModal").css("display", "none");
+		$("#campoLiteralModal").css("display", "none");
+		$("#campoNumeralModal").css("display", "none");
+		$("#campoParagrafoModal").css("display", "none");
 
 		$("#tituloFuncionModal").text("Borrar");
 		$("#txtId").val("");
