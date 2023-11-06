@@ -42,8 +42,8 @@ function ConsultarDescripcionPorId($id){
         $descripcion = $row['descripcion'];
     }
     $objControlConexion->cerrarBd();
-    return $descripcion;
-
+    
+    return substr($descripcion, 0, 50);
 }
 }
 ?>

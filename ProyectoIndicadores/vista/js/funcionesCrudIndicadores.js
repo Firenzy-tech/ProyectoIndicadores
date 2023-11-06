@@ -43,6 +43,7 @@ $(document).ready(function()
 		$("#campoLiteralModal").css("display", "block");
 		$("#campoNumeralModal").css("display", "block");
 		$("#campoParagrafoModal").css("display", "block");
+		$("#campoTipoFrecuencia").css("display", "block");
 
 
 		$("#txtCodigo").removeAttr("disabled");
@@ -58,6 +59,7 @@ $(document).ready(function()
 		$("#txtLiteral").removeAttr("disabled");
 		$("#txtNumeral").removeAttr("disabled");
 		$("#txtParagrafo").removeAttr("disabled");
+		$("#txtFrecuencia").removeAttr("disabled");
 
 
 		$("#txtCodigo").val("");
@@ -66,6 +68,7 @@ $(document).ready(function()
 		$("#txtAlcance").val("");
 		$("#txtFormula").val("");
 		$("#txtMeta").val("");
+		$("#txtFrecuencia").val("");
 		//
 		$("#btnGuardar").css("visibility", "visible");
 		//
@@ -90,6 +93,7 @@ $(document).ready(function()
 		$("#campoLiteralModal").css("display", "none");
 		$("#campoNumeralModal").css("display", "none");
 		$("#campoParagrafoModal").css("display", "none");
+		$("#campoTipoFrecuencia").css("display", "none");
 
 
 		$("#tituloFuncionModal").text("Consultar");
@@ -118,6 +122,7 @@ $(document).ready(function()
 		$("#campoLiteralModal").css("display", "block");
 		$("#campoNumeralModal").css("display", "block");
 		$("#campoParagrafoModal").css("display", "block");
+		$("#campoTipoFrecuencia").css("display", "block");
 
 		
 		$("#tituloFuncionModal").text("Modificar");
@@ -135,6 +140,7 @@ $(document).ready(function()
 		$("#txtLiteral").removeAttr("disabled");
 		$("#txtNumeral").removeAttr("disabled");
 		$("#txtParagrafo").removeAttr("disabled");
+		$("#txtFrecuencia").removeAttr("disabled");
 		
 		$("#txtId").val("");
 		$("#txtNombre").val("");
@@ -162,6 +168,7 @@ $(document).ready(function()
 		$("#campoLiteralModal").css("display", "none");
 		$("#campoNumeralModal").css("display", "none");
 		$("#campoParagrafoModal").css("display", "none");
+		$("#campoTipoFrecuencia").css("display", "none");
 
 		$("#tituloFuncionModal").text("Borrar");
 		$("#txtId").val("");

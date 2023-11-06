@@ -86,6 +86,7 @@ if (isset($_POST['txtNombre'])) $nom = $_POST['txtNombre'];
 if (isset($_POST['txtObjetivo'])) $objt = $_POST['txtObjetivo'];
 if (isset($_POST['txtAlcance'])) $alc = $_POST['txtAlcance'];
 if (isset($_POST['txtFormula'])) $for = $_POST['txtFormula'];
+if (isset($_POST['txtFrecuencia'])) $fkidfrecu = $_POST['txtFrecuencia'];
 
 if (isset($_POST['txtTipoIndicador'])) {
 	$tipoIndicadores = explode(";", $_POST['txtTipoIndicador']);
@@ -130,7 +131,7 @@ switch ($boton) {
 		$id=null,$cod, $nom, $objt, $alc, $for, 
 		$fkidtpindic, $fkidunimedi, $met, 
 		$fkidsenti,$fkidfrecu, $fkidartic, $fkidliter, 
-		$fkidnumer, $fkidparag, );
+		$fkidnumer, $fkidparag );
 		$objControlIndicador = new ControlIndicador($objIndicadores);
 		$objControlIndicador->guardar();
 		header('Location: vistaIndicadores.php');
@@ -158,7 +159,10 @@ switch ($boton) {
 		
 		break;
 	case 'Modificar':
-		$objIndicadores = new Indicador($id, $cod, $nom, $objt, $alc, $for, "", "", $met, "", "", "", "", "", "");
+		$objIndicadores = new Indicador($id,$cod, $nom, $objt, $alc, $for, 
+		$fkidtpindic, $fkidunimedi, $met, 
+		$fkidsenti,$fkidfrecu, $fkidartic, $fkidliter, 
+		$fkidnumer, $fkidparag);
 		$objControlIndicador = new ControlIndicador($objIndicadores);
 		$objControlIndicador->modificar();
 		header('Location: vistaIndicadores.php');
@@ -263,10 +267,9 @@ switch ($boton) {
 							</td>
 							<td style="min-width: 150px;"><?php echo $mostrarNombreArticulo = $objControlArt->ConsultarNombrePorId($registrosPaginaActual[$i]->getFkIdArticulo()); ?>
 							</td>
-							<td style="min-width: 150px;"><?php echo $mostrarDescripcionLiteral = $objControlLit->ConsultarDescripcionPorId($registrosPaginaActual[$i]->getFkIdLiteral()); ?>
+							<td style="min-width: 150px;min-height: 150px;"><?php echo $mostrarDescripcionLiteral = $objControlLit->ConsultarDescripcionPorId($registrosPaginaActual[$i]->getFkIdLiteral()); ?>
 							</td>
-							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getFkIdNumeral(); ?>
-							</td>
+							<td style="min-width: 150px; max-height: 150px;"><?php echo $registrosPaginaActual[$i]->getFkIdNumeral(); ?></td>
 							<td style="min-width: 150px;"><?php echo $registrosPaginaActual[$i]->getFkIdParagrafo(); ?></td>
 							<td>
 
@@ -369,6 +372,11 @@ switch ($boton) {
 													<label>Formula Indicador</label>
 													<input type="text" id="txtFormula" name="txtFormula" class="form-control" value="<?php echo $for ?>" disabled>
 												</div>
+												<div class="form-group col-6" id="campoTipoFrecuencia">
+													<label>Frecuencia</label>
+													<input type="text" id="txtFrecuencia" name="txtFrecuencia" class="form-control" value="<?php echo $met ?>" disabled>
+												</div>
+													
 
 												<div class="form-group col-6" id="campoTipoIndicadorModal">
 													<label>Tipo indicador</label>

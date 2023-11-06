@@ -59,8 +59,22 @@ class ControlIndicador{
         $alc = $this->objIndicador->getAlcance();
         $for = $this->objIndicador->getFormula();
         $met = $this->objIndicador->getMeta();
+        $fkidtipoindicador = $this->objIndicador->getFkIdTipoIndicador();
+        $fkidunidadmedicion = $this->objIndicador->getFkIdUnidadMedicion();
+        $fkidsentido = $this->objIndicador->getFkIdSentido();
+        $fkidfrecuencia = $this->objIndicador->getFkIdFrecuencia();
+        $fkidarticulo = $this->objIndicador->getFkIdArticulo();
+        $fkidliteral = $this->objIndicador->getFkIdLiteral();
+        $fkidnumeral = $this->objIndicador->getFkIdNumeral();
+        $fkidparagrafo = $this->objIndicador->getFkIdParagrafo();
         
-        $comandoSql = "UPDATE indicador SET codigo='$cod', nombre='$nom',  objetivo='$objt',  alcance='$alc',  formula='$for',  meta='$met' WHERE id = '$id'";
+        $comandoSql = "UPDATE indicador SET codigo='$cod', 
+        nombre='$nom', objetivo='$objt', alcance='$alc', 
+        formula='$for', fkidtipoindicador='$fkidtipoindicador', 
+        fkidunidadmedicion='$fkidunidadmedicion', meta='$met', 
+        fkidsentido='$fkidsentido', fkidfrecuencia='$fkidfrecuencia', 
+        fkidarticulo='$fkidarticulo', fkidliteral='$fkidliteral', 
+        fkidnumeral='$fkidnumeral', fkidparagrafo='$fkidparagrafo' WHERE id = '$id'";
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd($GLOBALS['serv'], $GLOBALS['usua'], $GLOBALS['pass'], $GLOBALS['bdat'], $GLOBALS['port']);
         $objControlConexion->ejecutarComandoSql($comandoSql);
@@ -69,7 +83,7 @@ class ControlIndicador{
 
     function borrar(){
         $id= $this->objIndicador->getId(); 
-        $comandoSql = "DELETE FROM indicador WHERE id = '$id'";
+        $comandoSql = "DELETE FROM indicador WHERE id = '$id';";
         $objControlConexion = new ControlConexion();
         $objControlConexion->abrirBd($GLOBALS['serv'],$GLOBALS['usua'],$GLOBALS['pass'],$GLOBALS['bdat'],$GLOBALS['port']);
         $objControlConexion->ejecutarComandoSql($comandoSql);
