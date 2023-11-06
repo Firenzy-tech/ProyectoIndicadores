@@ -11,11 +11,22 @@ include '../modelo/Indicador.php';
 include '../modelo/TipoIndicador.php';
 include '../modelo/Unidadmedicion.php';
 include '../modelo/Sentido.php';
+include '../modelo/Articulo.php';
+include '../modelo/Literal.php';
+include '../modelo/Numeral.php';
+include '../modelo/Paragrafo.php';
 
 include '../controlador/ControlRepresenvisual.php';
 include '../controlador/ControlRepresenvisualPorIndicador.php';
 include '../modelo/Represenvisual.php';
 include '../modelo/RepresenvisualPorIndicador.php';
+
+include '../controlador/ControlArticulo.php';
+include '../controlador/ControlLiteral.php';
+include '../controlador/ControlNumeral.php';
+include '../controlador/ControlParagrafo.php';
+
+
 
 $boton = "";
 $id = "";
@@ -46,6 +57,24 @@ $arregloUnidadmedicion = $objControlUniMed->listar();
 
 $objControlSentido = new ControlSentido(null);
 $arregloSentido = $objControlSentido->listar();
+
+$objControlSentido = new ControlSentido(null);
+$arregloSentido = $objControlSentido->listar();
+
+$objControlArt = new ControlArticulo(null);
+$arregloArticulo = $objControlArt->listar();
+
+$objControlLit = new ControlLiteral(null);
+$arregloLiteral = $objControlLit->listar();
+
+$objControlNum = new ControlNumeral(null);
+$arregloNumeral = $objControlNum->listar();
+
+$objControlPar = new ControlParagrafo(null);
+$arregloParagrafo = $objControlPar->listar();
+
+
+
 //var_dump($arregloIndicadores);
 if (isset($_POST['bt'])) $boton = $_POST['bt']; //toma del arreglo post el value del bt	
 if (isset($_POST['txtId'])) $id = $_POST['txtId'];
