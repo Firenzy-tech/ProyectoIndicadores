@@ -95,26 +95,18 @@ include 'Header.php';
 			<div class="table-title">
 				<div class="row">
 					<div class="col-sm-6">
-						<h2 class="miEstilo">Gestión <b>Usuarios</b></h2>
+						<h2 class="miEstilo">Gestión Usuarios</h2>
 					</div>
 					<div class="col-sm-6">
 						<a href="#crudModal" class="btn btn-primary" data-toggle="modal"><i class="material-icons">&#xE84E;</i> <span>Gestión Usuarios</span></a>
-						
 					</div>
 				</div>
 			</div>
 			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
-						<th>
-							<span class="custom-checkbox">
-								<input type="checkbox" id="selectAll">
-								<label for="selectAll"></label>
-							</span>
-						</th>
 						<th>Email</th>
 						<th>Contraseña</th>
-						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -122,36 +114,14 @@ include 'Header.php';
 					for($i = 0; $i < count($arregloUsuarios); $i++){
 					?>
 						<tr>
-							<td>
-								<span class="custom-checkbox">
-									<input type="checkbox" id="checkbox1" name="options[]" value="1">
-									<label for="checkbox1"></label>
-								</span>
-							</td>
 							<td><?php echo $arregloUsuarios[$i]->getEmail();?></td>
 							<td><?php echo $arregloUsuarios[$i]->getContrasena();?></td>
-							<td>
-								<a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-								<a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-							</td>
 						</tr>
 					<?php
 					}
 					?>
 				</tbody>
 			</table>
-			<div class="clearfix">
-				<div class="hint-text">Mostrando <b>5</b> de <b>25</b> entradas</div>
-				<ul class="pagination">
-					<li class="page-item disabled"><a href="#">Anterior</a></li>
-					<li class="page-item"><a href="#" class="page-link">1</a></li>
-					<li class="page-item"><a href="#" class="page-link">2</a></li>
-					<li class="page-item active"><a href="#" class="page-link">3</a></li>
-					<li class="page-item"><a href="#" class="page-link">4</a></li>
-					<li class="page-item"><a href="#" class="page-link">5</a></li>
-					<li class="page-item"><a href="#" class="page-link">Siguiente</a></li>
-				</ul>
-			</div>
 		</div>
 	</div>        
 </div>

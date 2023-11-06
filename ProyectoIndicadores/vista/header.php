@@ -10,15 +10,25 @@
   <link rel="stylesheet" href="../vista/css/cssTablas.css">
 
 <header class="main-header">
+  <style>
+    .btn-nav {
+      background-color: #007BFF;
+    }
+    .navigation {
+      background-color: #007BFF;
+    }
+    
+  </style>
   <label for="btn-nav" class="btn-nav"><i class="fas fa-bars"></i></label>
   <input type="checkbox" id="btn-nav">
   <center>
     <!--<h1>Proyecto indicadores</h1>-->
-    <h1 style="padding:10px;">PROYECTO INDICADORES</h1>
+    <h1 style="padding:10px; background-color: #007BFF">PROYECTO INDICADORES</h1>
   </center>
   
   <nav>
     <ul class="navigation">
+
       <li><a href="">Inicio</a></li>
       <li><a href="vistaUsuarios.php">Usuario</a></li>
       <li><a href="vistaRol.php">Rol</a></li>
@@ -31,7 +41,6 @@
       <li><a href="vistaTipoactor.php">Tipo actor</a></li>
       <li><a href="vistaTipoindicador.php">Tipo indicador</a></li>
       <li><a href="vistaUnidadmedicion.php">Unidad medicion</a></li>
-      <li><a href="">xxxxxxxxxx</a></li>
     </ul>
   </nav>
 
