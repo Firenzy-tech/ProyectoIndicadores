@@ -28,12 +28,13 @@
   </script>
   <label for="btn-nav" class="btn-nav"><i class="fas fa-bars"></i></label>
   <input type="checkbox" id="btn-nav">
+  <button onclick="cerrarSesion()" class="btn btn-danger" style="float: right; width: 170px; height: 57px;">Cerrar Sesión</button>
+
   <center>
     <!--<h1>Proyecto indicadores</h1>-->
     <h1 style="padding:10px; background-color: #007BFF">PROYECTO INDICADORES</h1>
-    
+
   </center>
-  <button onclick="cerrarSesion()" class="btn btn-danger" style="float: right;">Cerrar Sesión</button>
  
   
   <nav>
