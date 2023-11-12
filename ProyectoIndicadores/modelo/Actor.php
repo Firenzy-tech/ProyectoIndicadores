@@ -1,6 +1,7 @@
 <?php 
 class Actor{
-    var $fkidtipoactor, $nombre, $id
+
+    var $fkidtipoactor, $nombre, $id;
 
     function __construct($fkidtipoactor, $nombre,$id){
         $this->fkidtipoactor = $fkidtipoactor;

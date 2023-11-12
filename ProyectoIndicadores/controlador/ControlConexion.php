@@ -1,6 +1,7 @@
 <?php
 
-class ControlConexion{
+class ControlConexion
+{
 	
 	var $conn;
 	

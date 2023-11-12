@@ -19,12 +19,22 @@
     }
     
   </style>
+  <script>
+  function cerrarSesion() {
+        
+   
+        window.location.href = 'cerrar_sesion.php';
+    }
+  </script>
   <label for="btn-nav" class="btn-nav"><i class="fas fa-bars"></i></label>
   <input type="checkbox" id="btn-nav">
   <center>
     <!--<h1>Proyecto indicadores</h1>-->
     <h1 style="padding:10px; background-color: #007BFF">PROYECTO INDICADORES</h1>
+    
   </center>
+  <button onclick="cerrarSesion()" class="btn btn-danger" style="float: right;">Cerrar Sesión</button>
+ 
   
   <nav>
     <ul class="navigation">
