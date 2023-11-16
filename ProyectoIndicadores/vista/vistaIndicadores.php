@@ -41,7 +41,7 @@ include '../controlador/ControlNumeral.php';
 include '../controlador/ControlParagrafo.php';
 
 
-
+$botonVista = "";
 $boton = "";
 $id = "";
 $cod = "";
@@ -93,6 +93,7 @@ $objTipoIndicador = new ControlTipoindicador(null);
 
 
 //var_dump($arregloIndicadores);
+if (isset($_POST['botonVista'])) $botonVista = $_POST['botonVista']; //toma del arreglo post el value del bt
 if (isset($_POST['bt'])) $boton = $_POST['bt']; //toma del arreglo post el value del bt	
 if (isset($_POST['txtId'])) $id = $_POST['txtId'];
 if (isset($_POST['txtCodigo'])) $cod = $_POST['txtCodigo'];
@@ -134,7 +135,7 @@ if (isset($_POST['txtNumeral'])) {
 if (isset($_POST['txtParagrafo'])) {
 	$paragrafos = explode(";", $_POST['txtParagrafo']);
 	$fkidparag = $paragrafos[0];
-	$fkidartic = $paragrafos[2];
+	// $fkidartic = $paragrafos[2];
 }
 
 if (isset($_POST['txtMeta'])) $met = $_POST['txtMeta'];
@@ -343,10 +344,10 @@ switch ($boton) {
 								<h4>Seleccione la función que desea realizar</h4>
 								<br>
 								<div class="crudFuncionesModal">
-									<b id="aConsultar" class="btn btn-secondary">Consultar</b>
-									<b id="aGuardar" class="btn btn-secondary">Añadir</b>
-									<b id="aModificar" class="btn btn-secondary">Modificar</b>
-									<b id="aBorrar" class="btn btn-secondary">Borrar</b>
+									<b id="aConsultar" name="botonVista" class="btn btn-secondary" value ="aConsultar">Consultar</b>
+									<b id="aGuardar" neme="botonVista" class="btn btn-secondary" value = "aGuardar" >Añadir</b>
+									<b id="aModificar" name="botonVista" class="btn btn-secondary" value = "aModificar" >Modificar</b>
+									<b id="aBorrar" name="botonVista" class="btn btn-secondary" value = "aBorrar">Borrar</b>
 								</div>
 							</div>
 
@@ -407,9 +408,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoUnidadMedicionModal">
 													<label>Unidad Medición</label>
 													<select class="form-control" id="txtUnidadMedicion" name="txtUnidadMedicion" disabled>
-													<option value="">Seleccione unidad de Medición</option>
+													<!-- <option value="">Seleccione unidad de Medición</option> -->
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione unidad de Medición</option>
+													<?php } ?>
 														<?php for ($i = 0; $i < count($arregloUnidadmedicion); $i++) { ?>
 															<option value="<?php echo $arregloUnidadmedicion[$i]->getId() . ";" . $arregloUnidadmedicion[$i]->getDescripcion(); ?>">
+																<?php if($boton=="Consultar"){echo $fkidtpindic;}else{echo $arregloUnidadmedicion[$i]->getDescripcion();} ?>
 																<?php echo $arregloUnidadmedicion[$i]->getDescripcion(); ?>
 															</option>
 														<?php } ?>
@@ -424,7 +429,7 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoSentidoModal">
 													<label>Sentido</label>
 													<select class="form-control" id="txtSentido" name="txtSentido" disabled>
-													<option value="">Seleccione un Ssentido</option>
+													<option value="">Seleccione un Sentido</option>
 														<?php for ($i = 0; $i < count($arregloSentido); $i++) { ?>
 															<option value="<?php echo $arregloSentido[$i]->getId() . ";" . $arregloSentido[$i]->getNombre(); ?>">
 																<?php echo  $arregloSentido[$i]->getNombre(); ?>

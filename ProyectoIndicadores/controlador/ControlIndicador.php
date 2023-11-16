@@ -46,6 +46,15 @@ class ControlIndicador{
             $this->objIndicador->setAlcance($row['alcance']);
             $this->objIndicador->setFormula($row['formula']);
             $this->objIndicador->setMeta($row['meta']);
+            $this->objIndicador->setFkIdTipoIndicador($row['fkidtipoindicador']);
+            $this->objIndicador->setFkIdUnidadMedicion($row['fkidunidadmedicion']);
+            $this->objIndicador->setFkIdSentido($row['fkidsentido']);
+            $this->objIndicador->setFkIdFrecuencia($row['fkidfrecuencia']);
+            $this->objIndicador->setFkIdArticulo($row['fkidarticulo']);
+            $this->objIndicador->setFkIdLiteral($row['fkidliteral']);
+            $this->objIndicador->setFkIdNumeral($row['fkidnumeral']);
+            $this->objIndicador->setFkIdParagrafo($row['fkidparagrafo']);
+            
         }
         $objControlConexion->cerrarBd();
         return $this->objIndicador;

@@ -52,6 +52,9 @@
       <li><a href="vistaTipoactor.php">Tipo actor</a></li>
       <li><a href="vistaTipoindicador.php">Tipo indicador</a></li>
       <li><a href="vistaUnidadmedicion.php">Unidad medicion</a></li>
+      
+
+
     </ul>
   </nav>
 
