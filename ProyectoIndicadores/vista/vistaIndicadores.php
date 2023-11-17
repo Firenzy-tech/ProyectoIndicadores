@@ -344,7 +344,8 @@ switch ($boton) {
 								<h4>Seleccione la función que desea realizar</h4>
 								<br>
 								<div class="crudFuncionesModal">
-									<b id="aConsultar" name="botonVista" class="btn btn-secondary" value ="aConsultar">Consultar</b>
+									<!-- <b id="aConsultar" name="botonVista" class="btn btn-secondary" value ="aConsultar">Consultar</b> -->
+									<input type="submit" id="btnLimpiar" name="limpiar" class="btn btn-secondary" value="Consultar">
 									<b id="aGuardar" neme="botonVista" class="btn btn-secondary" value = "aGuardar" >Añadir</b>
 									<b id="aModificar" name="botonVista" class="btn btn-secondary" value = "aModificar" >Modificar</b>
 									<b id="aBorrar" name="botonVista" class="btn btn-secondary" value = "aBorrar">Borrar</b>
@@ -396,10 +397,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoTipoIndicadorModal">
 													<label>Tipo indicador</label>
 													<select class="form-control" id="txtTipoIndicador" name="txtTipoIndicador" disabled>
-													<option value="">Seleccione un Tipo Indicador</option>
-														<?php for ($i = 0; $i < count($arregloTipoindicador); $i++) { ?>
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione Tipo indicador</option>
+													<?php } ?>	
+													<?php for ($i = 0; $i < count($arregloTipoindicador); $i++) { ?>
 															<option value="<?php echo $arregloTipoindicador[$i]->getId() . ";" . $arregloTipoindicador[$i]->getNombre(); ?>">
-																<?php echo  $arregloTipoindicador[$i]->getNombre(); ?>
+															<?php if($boton=="Consultar"){echo $fkidtpindic;}?>	
+															<?php echo  $arregloTipoindicador[$i]->getNombre(); ?>
 															</option>
 														<?php } ?>
 													</select>
@@ -408,13 +412,12 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoUnidadMedicionModal">
 													<label>Unidad Medición</label>
 													<select class="form-control" id="txtUnidadMedicion" name="txtUnidadMedicion" disabled>
-													<!-- <option value="">Seleccione unidad de Medición</option> -->
 													<?php if($boton!="Consultar") { ?>
     													<option value="">Seleccione unidad de Medición</option>
 													<?php } ?>
 														<?php for ($i = 0; $i < count($arregloUnidadmedicion); $i++) { ?>
 															<option value="<?php echo $arregloUnidadmedicion[$i]->getId() . ";" . $arregloUnidadmedicion[$i]->getDescripcion(); ?>">
-																<?php if($boton=="Consultar"){echo $fkidtpindic;}else{echo $arregloUnidadmedicion[$i]->getDescripcion();} ?>
+																<?php if($boton=="Consultar"){echo $fkidtpindic;}?>
 																<?php echo $arregloUnidadmedicion[$i]->getDescripcion(); ?>
 															</option>
 														<?php } ?>
@@ -429,9 +432,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoSentidoModal">
 													<label>Sentido</label>
 													<select class="form-control" id="txtSentido" name="txtSentido" disabled>
-													<option value="">Seleccione un Sentido</option>
+												
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione unidad de Sentido</option>
+													<?php } ?>
 														<?php for ($i = 0; $i < count($arregloSentido); $i++) { ?>
 															<option value="<?php echo $arregloSentido[$i]->getId() . ";" . $arregloSentido[$i]->getNombre(); ?>">
+																<?php if($boton=="Consultar"){echo $fkidsenti;}?>
 																<?php echo  $arregloSentido[$i]->getNombre(); ?>
 															</option>
 														<?php } ?>
@@ -443,10 +450,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoArticuloModal">
 													<label>Articulo</label>
 													<select class="form-control" id="txtArticulo" name="txtArticulo" disabled>
-													<option value="">Seleccione un Artículo</option>
-														<?php for ($i = 0; $i < count($arregloArticulo); $i++) { ?>
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione unidad de Articulo</option>
+													<?php } ?>
+													<?php for ($i = 0; $i < count($arregloArticulo); $i++) { ?>
 															<option value="<?php echo $arregloArticulo[$i]->getId() . ";" . $arregloArticulo[$i]->getNombre(); ?>">
-																<?php echo  $arregloArticulo[$i]->getNombre(); ?>
+															<?php if($boton=="Consultar"){echo $fkidartic;}?>	
+															<?php echo  $arregloArticulo[$i]->getNombre(); ?>
 															</option>
 														<?php } ?>
 													</select>
@@ -455,10 +465,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoLiteralModal">
 													<label>Literal</label>
 													<select class="form-control" id="txtLiteral" name="txtLiteral" disabled>
-													<option value="">Seleccione un Literal</option>
-														<?php for ($i = 0; $i < count($arregloLiteral); $i++) { ?>
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione unidad de Literal</option>
+													<?php } ?>
+													<?php for ($i = 0; $i < count($arregloLiteral); $i++) { ?>
 															<option value="<?php echo $arregloLiteral[$i]->getId() . ";" . $arregloLiteral[$i]->getDescripcion(); ?>">
-																<?php echo  $arregloLiteral[$i]->getDescripcion(); ?>
+															<?php if($boton=="Consultar"){echo $fkidliter;}?>	
+															<?php echo  $arregloLiteral[$i]->getDescripcion(); ?>
 															</option>
 														<?php } ?>
 													</select>
@@ -467,10 +480,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoNumeralModal">
 													<label>Numeral</label>
 													<select class="form-control" id="txtNumeral" name="txtNumeral" disabled>
-													<option value="">Seleccione un Numeral</option>
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione unidad de Numeral</option>
+													<?php } ?>
 														<?php for ($i = 0; $i < count($arregloNumeral); $i++) { ?>
 															<option value="<?php echo $arregloNumeral[$i]->getId() . ";" . $arregloNumeral[$i]->getDescripcion(); ?>">
-																<?php echo  $arregloNumeral[$i]->getDescripcion(); ?>
+															<?php if($boton=="Consultar"){echo $fkidnumer;}?>	
+															<?php echo  $arregloNumeral[$i]->getDescripcion(); ?>
 															</option>
 														<?php } ?>
 													</select>
@@ -480,10 +496,13 @@ switch ($boton) {
 												<div class="form-group col-6" id="campoParagrafoModal">
 													<label>Paragrafo</label>
 													<select class="form-control" id="txtParagrafo" name="txtParagrafo" disabled>
-														<option value="">Seleccione un Parrafo</option>
+													<?php if($boton!="Consultar") { ?>
+    													<option value="">Seleccione unidad de Paragrafo</option>
+													<?php } ?>
 														<?php for ($i = 0; $i < count($arregloParagrafo); $i++) { ?>
 															<option value="<?php echo $arregloParagrafo[$i]->getId() . ";" . $arregloParagrafo[$i]->getDescripcion().";". $arregloParagrafo[$i]->getFkidarticulo(); ?>">
-																<?php echo  $arregloParagrafo[$i]->getDescripcion(); ?>
+															<?php if($boton=="Consultar"){echo $fkidparag;}?>	
+															<?php echo  $arregloParagrafo[$i]->getDescripcion(); ?>
 															</option>
 														<?php } ?>
 													</select>
