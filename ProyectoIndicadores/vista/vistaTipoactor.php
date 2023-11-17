@@ -1,4 +1,15 @@
 <?php
+	
+	session_start();
+
+// Verificar si el email en la sesión está vacío
+if (empty($_SESSION['email'])) {
+	// El email en la sesión está vacío, redireccionar al formulario de inicio de sesión o a otra página de inicio
+	header('Location: ErrorInicioSesion.php');
+	exit();
+}
+	
+	
 	include '../controlador/configBd.php';
 	include '../controlador/ControlConexion.php';
 	include '../controlador/ControlTipoactor.php';

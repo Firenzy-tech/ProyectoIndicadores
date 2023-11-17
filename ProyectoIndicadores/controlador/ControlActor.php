@@ -20,7 +20,6 @@ function guardar(){
     $objControlConexion->cerrarBd();
     return $msg;
 
-
 }
 }
 
