@@ -53,6 +53,15 @@
       <li><a href="vistaTipoindicador.php">Tipo indicador</a></li>
       <li><a href="vistaUnidadmedicion.php">Unidad medicion</a></li>
       
+      <!-- <li><a href="vistaActor.php">Actor</a></li>
+      <li><a href="vistaArticulo.php">Articulo</a></li>
+      <li><a href="vistaLiteral.php">Literal</a></li>
+      <li><a href="vistaNumeral.php">Numeral</a></li>
+      <li><a href="vistaResultadoPorIndicador.php">Resultado por indicador</a></li>
+      <li><a href="vistaVariable.php">Variable</a></li>
+      <li><a href="vistaParrafo.php">Parrafo</a></li> -->
+
+      
 
 
     </ul>

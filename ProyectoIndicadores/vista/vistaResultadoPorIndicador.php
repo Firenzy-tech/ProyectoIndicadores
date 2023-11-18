@@ -5,10 +5,8 @@
 //Literal 
 //Numeral
 //Resultado por Indicador
-//Seccion
-//Sentido
 //Variable
-//Subseccion
+
 ?>
 
 

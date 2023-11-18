@@ -21,6 +21,25 @@ function guardar(){
     return $msg;
 
 }
+
+function consultar(){
+    $msg = "ok";
+    $id = $this->objActor->getId();
+    $fkidtipoactor = $this->objActor->getFkidtipoactor();
+    $nombre = $this->objActor->getNombre();
+    $comandoSql = "SELECT * FROM tblactor WHERE id = '$id'";
+    $objControlConexion = new ControlConexion();
+    $objControlConexion->abrirBd($GLOBALS['serv'],$GLOBALS['usua'],$GLOBALS['pass'],$GLOBALS['bdat'],$GLOBALS['port']);
+    $recordSet = $objControlConexion->ejecutarSelect($comandoSql);
+    if ($row = $recordSet->fetch_array(MYSQLI_BOTH)){
+        $this->objActor->setFkidtipoactor($row['fkidtipoactor']);
+        $this->objActor->setNombre($row['nombre']);
+    }
+    $objControlConexion->cerrarBd();
+    return $msg;
+
+
+
 }
 
 ?>
